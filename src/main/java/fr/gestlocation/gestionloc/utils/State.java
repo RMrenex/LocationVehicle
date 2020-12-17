@@ -1,4 +1,4 @@
-package fr.gestlocation.gestionloc;
+package fr.gestlocation.gestionloc.utils;
 
 public enum State {
 

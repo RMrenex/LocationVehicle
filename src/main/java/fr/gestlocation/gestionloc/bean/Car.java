@@ -1,9 +1,14 @@
 package fr.gestlocation.gestionloc.bean;
 
-import fr.gestlocation.gestionloc.State;
+import fr.gestlocation.gestionloc.utils.State;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Car {
 
@@ -11,16 +16,26 @@ public class Car {
 	private State state;
 	private String color;
 	private String brand;
+	private String currentlybreakdown;
 	private int doorNumber;
 	private int numberOfHorses;
 	private List<History> histories;
 	private List<Location> locations;
 
+	/**
+	 *
+	 * @param matricule
+	 * @param color
+	 * @param brand
+	 * @param doorNumber
+	 * @param numberOfHorses
+	 */
 	public Car(String matricule, String color, String brand, int doorNumber, int numberOfHorses) {
 		this.matricule = matricule;
 		this.state = State.AVALAIBLE;
 		this.color = color;
 		this.brand = brand;
+		this.currentlybreakdown = null;
 		this.doorNumber = doorNumber;
 		this.numberOfHorses = numberOfHorses;
 		this.histories = new ArrayList<>();
@@ -62,6 +77,14 @@ public class Car {
 		this.brand = brand;
 	}
 
+	public String getCurrentlybreakdown() {
+		return currentlybreakdown;
+	}
+
+	public void setCurrentlybreakdown(String currentlybreakdown) {
+		this.currentlybreakdown = currentlybreakdown;
+	}
+
 	public int getDoorNumber() {
 		return doorNumber;
 	}
@@ -84,5 +107,64 @@ public class Car {
 
 	public List<Location> getLocations() {
 		return locations;
+	}
+
+
+	/**
+	 *
+	 * @param locationList
+	 * @return number rental of the location list for the current month
+	 */
+	public int getRentalOfTheCurrentMonth(List<Car> locationList){
+
+		AtomicInteger iterator = new AtomicInteger();
+
+		LocalDateTime currentDate = LocalDateTime.now();
+
+		locationList.forEach(car -> car.getLocations().forEach(loc -> {
+
+			if(convertSringToDate(loc.getBeginDateLocation()).getMonth().equals(currentDate.getMonth()) && convertSringToDate(loc.getBeginDateLocation()).getYear() == currentDate.getYear()){
+				iterator.getAndIncrement();
+			}
+
+		}));
+
+		return iterator.get();
+	}
+
+	/**
+	 *
+	 * @param locationList
+	 * @return number rental of the location list for the current year
+	 */
+	public int getRentalOfTheCurrentYear(List<Car> locationList){
+
+		AtomicInteger iterator = new AtomicInteger();
+
+		LocalDateTime currentDate = LocalDateTime.now();
+
+		locationList.forEach(car -> car.getLocations().forEach(loc -> {
+
+			if(convertSringToDate(loc.getBeginDateLocation()).getYear() == currentDate.getYear()){
+				iterator.getAndIncrement();
+			}
+
+		}));
+
+		return iterator.get();
+
+	}
+
+	/**
+	 *
+	 * @param date
+	 * @return convert String date to LocaDate
+	 */
+	private LocalDate convertSringToDate(String date){
+
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.FRANCE);
+		LocalDate localDate = LocalDate.parse(date, formatter);
+
+		return localDate;
 	}
 }

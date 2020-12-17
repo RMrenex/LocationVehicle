@@ -3,16 +3,25 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE" />
+        <META HTTP-EQUIV="EXPIRES" CONTENT="-1" />
         <title>JSP - Hello World</title>
         <link rel="stylesheet" href="<core:url value="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>">
-        <link rel="stylesheet" href="<core:url value="css/mecanicien_navbar.css"/>">
     </head>
     <body>
-        <header><core:import url="WEB-INF/component/mecanicien_navbar.jsp"/></header>
-        <h1><%= "Hello World!" %></h1>
-        <!--JavaScript at end of body for optimized loading-->
-        <script src="<core:url value="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"/>"></script>
-        <!-- Compiled and minified JavaScript -->
-        <script src="<core:url value="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"/>"></script>
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m12 l12 xl12">
+                    <div class="card-panel center">
+                        <h4>Mécanicien</h4>
+                        <a href="<core:url value="/carRepair"/>">Cliquer ici pour vous connecter</a><br>
+                        <h4>Responsable</h4>
+                        <a href="<core:url value="/PannelControl"/>">Cliquer ici pour vous connecter</a><br>
+                        <h4>Gestionnaire</h4>
+                        <a href="<core:url value="/carLocation"/>">Cliquer ici pour vous connecter</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

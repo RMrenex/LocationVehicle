@@ -10,7 +10,7 @@
 <nav>
     <div class="nav-wrapper">
         <a href="#" class="brand-logo center"><img src="<core:url value="https://img.icons8.com/dusk/64/000000/car.png"/>"/></a>
-        <a href="#" class="brand-logo right"><img src="https://img.icons8.com/fluent/48/000000/close-window.png"/></a>
+        <a href="<core:url value="/disconnectServlet"/>" class="brand-logo right logout"><img src="https://img.icons8.com/fluent/48/000000/close-window.png"/></a>
         <ul id="nav-mobile" class="left hide-on-med-and-down">
             <li><a href="<core:url value="/carRepair"/>">Dashboard</a></li>
         </ul>

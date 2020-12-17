@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: asus
-  Date: 16/12/2020
-  Time: 15:23
+  Date: 17/12/2020
+  Time: 15:14
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -14,12 +14,13 @@
         <title>Tableau de bord</title>
         <link rel="stylesheet" href="<core:url value="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>">
         <link href="<core:url value="https://fonts.googleapis.com/icon?family=Material+Icons"/>" rel="stylesheet">
-        <link rel="stylesheet" href="<core:url value="/css/mechanic_navbar.css"/>">
+        <link rel="stylesheet" href="<core:url value="/css/responsable_navbar.css"/>">
     </head>
-    <body>
-        <header><core:import url="/WEB-INF/component/nav/mechanic_navbar.jsp"/></header><br>
-        <core:import url="/WEB-INF/component/display_cars.jsp"/><br>
 
+    <body>
+        <header><core:import url="/WEB-INF/component/nav/responsable_navbar.jsp"/></header><br>
+        <core:import url="/WEB-INF/component/display_cars.jsp"/><br>
+        <core:import url="/WEB-INF/component/display_location_cars.jsp"/>
 
         <script src="<core:url value="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"/>"></script>
         <script src="<core:url value="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"/>"></script>

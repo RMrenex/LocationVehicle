@@ -6,6 +6,12 @@ public class History {
     private String depart_date;
     private String breakdown;
 
+    /**
+     *
+     * @param arrival_date
+     * @param depart_date
+     * @param breakdown
+     */
     public History(String arrival_date, String depart_date, String breakdown) {
         this.arrival_date = arrival_date;
         this.depart_date = depart_date;
